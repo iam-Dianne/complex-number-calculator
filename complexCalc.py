@@ -25,7 +25,17 @@ def subtract():
     lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
 
 
+def multiply():
+    first_real = tb_first_real.get()
+    first_imaginary = tb_first_imaginary.get()
+    second_real = tb_second_real.get()
+    second_imaginary = tb_second_imaginary.get()
 
+    first_complex = complex(int(first_real), int(first_imaginary))
+    second_complex = complex(int(second_real), int(second_imaginary))
+
+    result = first_complex * second_complex
+    lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
 
 # window initialization
 window = Tk()
@@ -112,7 +122,8 @@ btn_subtract = Button(text="Subtract", font=('Arial', 11), background="#66fcf1",
 btn_subtract.place(x=165, y=390)
 
 btn_multipy = Button(text="Multiply", font=('Arial', 11), background="#66fcf1",
-                     fg="#1f2833", activebackground="#66fcf1")
+                     fg="#1f2833", activebackground="#66fcf1",
+                     command=multiply)
 btn_multipy.place(x=100, y=430)
 
 btn_divide = Button(text="Divide", font=('Arial', 11), background="#66fcf1",
