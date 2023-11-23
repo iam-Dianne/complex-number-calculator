@@ -12,6 +12,20 @@ def add():
     result = first_complex + second_complex
     lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
 
+def subtract():
+    first_real = tb_first_real.get()
+    first_imaginary = tb_first_imaginary.get()
+    second_real = tb_second_real.get()
+    second_imaginary = tb_second_imaginary.get()
+
+    first_complex = complex(int(first_real), int(first_imaginary))
+    second_complex = complex(int(second_real), int(second_imaginary))
+
+    result = first_complex - second_complex
+    lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+
+
+
 
 # window initialization
 window = Tk()
@@ -90,27 +104,28 @@ lbl_result.place(x=200, y=320)
 btn_add = Button(text="Add", font=('Arial', 11), background="#66fcf1",
                  fg="#1f2833", activebackground="#66fcf1",
                  command=add)
-btn_add.place(x=70, y=390)
+btn_add.place(x=110, y=390)
 
 btn_subtract = Button(text="Subtract", font=('Arial', 11), background="#66fcf1",
-                      fg="#1f2833", activebackground="#66fcf1")
-btn_subtract.place(x=120, y=390)
+                      fg="#1f2833", activebackground="#66fcf1",
+                      command=subtract)
+btn_subtract.place(x=165, y=390)
 
 btn_multipy = Button(text="Multiply", font=('Arial', 11), background="#66fcf1",
                      fg="#1f2833", activebackground="#66fcf1")
-btn_multipy.place(x=70, y=430)
+btn_multipy.place(x=100, y=430)
 
 btn_divide = Button(text="Divide", font=('Arial', 11), background="#66fcf1",
                     fg="#1f2833", activebackground="#66fcf1")
-btn_divide.place(x=130, y=430)
+btn_divide.place(x=175, y=430)
 
 btn_conj_first = Button(text="Conjugate the First Number", font=('Arial', 11),
                         background="#66fcf1", fg="#1f2833", activebackground="#66fcf1")
-btn_conj_first.place(x=200, y=390)
+btn_conj_first.place(x=250, y=390)
 
 btn_conj_second = Button(text="Conjugate the Second Number", font=('Arial', 11),
                          background="#66fcf1", fg="#1f2833", activebackground="#66fcf1")
-btn_conj_second.place(x=200, y=430)
+btn_conj_second.place(x=240, y=430)
 
 window.mainloop()
 
