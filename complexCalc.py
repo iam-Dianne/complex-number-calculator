@@ -1,3 +1,4 @@
+import math
 from tkinter import *
 
 def add():
@@ -36,6 +37,40 @@ def multiply():
 
     result = first_complex * second_complex
     lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+
+
+def divide():
+    first_real = tb_first_real.get()
+    first_imaginary = tb_first_imaginary.get()
+    second_real = tb_second_real.get()
+    second_imaginary = tb_second_imaginary.get()
+
+    first_complex = complex(int(first_real), int(first_imaginary))
+    second_complex = complex(int(second_real), int(second_imaginary))
+
+    result = first_complex / second_complex
+    lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+
+
+def conj_first():
+    first_real = tb_first_real.get()
+    first_imaginary = tb_first_imaginary.get()
+
+    first_complex = complex(int(first_real), int(first_imaginary))
+
+    result = first_complex.conjugate()
+    lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+
+def conj_second():
+    second_real = tb_second_real.get()
+    second_imaginary = tb_second_imaginary.get()
+
+    second_complex = complex(int(second_real), int(second_imaginary))
+
+    result = second_complex.conjugate()
+    lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+
+
 
 # window initialization
 window = Tk()
@@ -127,15 +162,18 @@ btn_multipy = Button(text="Multiply", font=('Arial', 11), background="#66fcf1",
 btn_multipy.place(x=100, y=430)
 
 btn_divide = Button(text="Divide", font=('Arial', 11), background="#66fcf1",
-                    fg="#1f2833", activebackground="#66fcf1")
+                    fg="#1f2833", activebackground="#66fcf1",
+                    command=divide)
 btn_divide.place(x=175, y=430)
 
 btn_conj_first = Button(text="Conjugate the First Number", font=('Arial', 11),
-                        background="#66fcf1", fg="#1f2833", activebackground="#66fcf1")
+                        background="#66fcf1", fg="#1f2833", activebackground="#66fcf1",
+                        command=conj_first)
 btn_conj_first.place(x=250, y=390)
 
 btn_conj_second = Button(text="Conjugate the Second Number", font=('Arial', 11),
-                         background="#66fcf1", fg="#1f2833", activebackground="#66fcf1")
+                         background="#66fcf1", fg="#1f2833", activebackground="#66fcf1",
+                         command=conj_second)
 btn_conj_second.place(x=240, y=430)
 
 window.mainloop()
