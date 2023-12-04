@@ -2,17 +2,29 @@ import math
 from tkinter import *
 from tkinter import messagebox
 
+# FOR ERROR MESSAGE AND SHIT
+def valid_input(value):
+    try:
+        int(value)
+        return True
+    except:
+        return False
+
 def add():
     first_real = tb_first_real.get()
     first_imaginary = tb_first_imaginary.get()
     second_real = tb_second_real.get()
     second_imaginary = tb_second_imaginary.get()
 
-    first_complex = complex(int(first_real), int(first_imaginary))
-    second_complex = complex(int(second_real), int(second_imaginary))
+    if valid_input(first_real) and valid_input(first_imaginary) and valid_input(second_real) and valid_input(
+            second_imaginary):
+        first_complex = complex(int(first_real), int(first_imaginary))
+        second_complex = complex(int(second_real), int(second_imaginary))
 
-    result = first_complex + second_complex
-    lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+        result = first_complex + second_complex
+        lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+    else:
+        messagebox.showerror("Error", "Only integer values are accepted.")
 
 def subtract():
     first_real = tb_first_real.get()
@@ -20,11 +32,16 @@ def subtract():
     second_real = tb_second_real.get()
     second_imaginary = tb_second_imaginary.get()
 
-    first_complex = complex(int(first_real), int(first_imaginary))
-    second_complex = complex(int(second_real), int(second_imaginary))
+    if valid_input(first_real) and valid_input(first_imaginary) and valid_input(second_real) and valid_input(
+            second_imaginary):
+        first_complex = complex(int(first_real), int(first_imaginary))
+        second_complex = complex(int(second_real), int(second_imaginary))
 
-    result = first_complex - second_complex
-    lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+        result = first_complex - second_complex
+        lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+    else:
+        messagebox.showerror("Error", "Only integer values are accepted.")
+
 
 
 def multiply():
@@ -33,12 +50,15 @@ def multiply():
     second_real = tb_second_real.get()
     second_imaginary = tb_second_imaginary.get()
 
-    first_complex = complex(int(first_real), int(first_imaginary))
-    second_complex = complex(int(second_real), int(second_imaginary))
+    if valid_input(first_real) and valid_input(first_imaginary) and valid_input(second_real) and valid_input(
+            second_imaginary):
+        first_complex = complex(int(first_real), int(first_imaginary))
+        second_complex = complex(int(second_real), int(second_imaginary))
 
-    result = first_complex * second_complex
-    lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
-
+        result = first_complex * second_complex
+        lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+    else:
+        messagebox.showerror("Error", "Only integer values are accepted.")
 
 def divide():
     first_real = tb_first_real.get()
@@ -46,31 +66,39 @@ def divide():
     second_real = tb_second_real.get()
     second_imaginary = tb_second_imaginary.get()
 
-    first_complex = complex(int(first_real), int(first_imaginary))
-    second_complex = complex(int(second_real), int(second_imaginary))
+    if valid_input(first_real) and valid_input(first_imaginary) and valid_input(second_real) and valid_input(
+            second_imaginary):
+        first_complex = complex(int(first_real), int(first_imaginary))
+        second_complex = complex(int(second_real), int(second_imaginary))
 
-    result = first_complex / second_complex
-    lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
-
+        result = first_complex / second_complex
+        lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+    else:
+        messagebox.showerror("Error", "Only integer values are accepted.")
 
 def conj_first():
     first_real = tb_first_real.get()
     first_imaginary = tb_first_imaginary.get()
 
-    first_complex = complex(int(first_real), int(first_imaginary))
+    if valid_input(first_real) and valid_input(first_imaginary):
+        first_complex = complex(int(first_real), int(first_imaginary))
 
-    result = first_complex.conjugate()
-    lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+        result = first_complex.conjugate()
+        lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+    else:
+        messagebox.showerror("Error", "Only integer values are accepted.")
 
 def conj_second():
     second_real = tb_second_real.get()
     second_imaginary = tb_second_imaginary.get()
 
-    second_complex = complex(int(second_real), int(second_imaginary))
+    if valid_input(second_real) and valid_input(second_imaginary):
+        second_complex = complex(int(second_real), int(second_imaginary))
 
-    result = second_complex.conjugate()
-    lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
-
+        result = second_complex.conjugate()
+        lbl_result.config(text=f"RESULT: {result}", font=('Arial', 12, 'bold'), background="#1f2833", fg="#c5c6c7")
+    else:
+        messagebox.showerror("Error", "Only integer values are accepted.")
 
 
 # window initialization
@@ -137,7 +165,6 @@ tb_second_imaginary.place(x=290, y=250)
 i_second = Label(window, text="i", font=('Arial', 30, 'bold'),
                   background="#1f2833", fg="#66fcf1",)
 i_second.place(x=390, y=248)
-
 
 
 
